@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
     </script>
@@ -365,6 +364,7 @@
         var $main = $('#main')
         var table = '';
 
+// function for getting n random items from array
         function getRandom(arr, n) {
             var result = new Array(n),
                 len = arr.length,
@@ -381,57 +381,54 @@
 
 
         var selectedWords = getRandom(words, 25);
-        
-        var nums = [0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+// 
+        var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+// random numbers for red blue and black        
         var colors = getRandom(nums, 12);
-        var red  = colors.slice(0, 6);
+// first 6 random we set into red
+        var red = colors.slice(0, 6);
+// middle one randon will be black       
         var black = colors[6];
+// rest random numbers will be blue
         var blue = colors.slice(7);
-
-
-
+// forming table
         var dataColor = 0;
         for (let index = 0; index < 5; index++) {
             var cells = '';
             for (let i = 0; i < 5; i++) {
-                cells += '<td class="cell no' + i + '" data-color="' + dataColor +'">' + selectedWords[0] + '</td>';
+                cells += '<td class="cell no' + i + '" data-color="' + dataColor + '">' + selectedWords[0] + '</td>';
                 dataColor++;
                 selectedWords.shift();
 
-         }
-
+            }
             var singleraw = '<tr id="raw_' + index + '">' + cells + '</tr>';
             table += singleraw;
         }
 
         $main.html(table);
-
-        $('td').on("click", function(){
+// on click we choose color
+        $('td').on("click", function () {
             var colorIndex = $(this).data('color');
             var color = 'grey';
-            if(red.indexOf(colorIndex) !== -1) {color="red"} 
-            if(blue.indexOf(colorIndex) !== -1) {color="blue"}
-            if(colorIndex === black) {color="black"}
-           $(this).css({"background-color":color, "color":"white"}); 
+            if (red.indexOf(colorIndex) !== -1) { color = "red" }
+            if (blue.indexOf(colorIndex) !== -1) { color = "blue" }
+            if (colorIndex === black) { color = "black" }
+            $(this).css({ "background-color": color, "color": "white" });
         })
-       
-        var map = "map.html?map=" +JSON.stringify({
+//create  map
+        var map = "map.html?map=" + JSON.stringify({
             red: red,
             blue: blue,
             black: black
-        }); 
-console.log(map);
+        });
+ // adding href attribute to link      
+        $(document).ready(function () {
+            $('#map').attr('href', map);
+        })
 
-
-$( document ).ready(function() {
-$('#map').attr('href', map);
-})
-
-</script>
-
-<a id="map" target="_blank"> Карта </a>
-
-
+    </script>
+    
+    <a id="map" target="_blank"> Карта </a>
 
 </body>
 
