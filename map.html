@@ -12,20 +12,23 @@
             border: 1px solid black;
             text-align: center;
         }
-        .black{
+
+        .black {
             background-color: black;
         }
-        .grey{
+
+        .grey {
             background-color: grey;
         }
-        .red{
+
+        .red {
             background-color: red;
         }
-        .blue{
+
+        .blue {
             background-color: blue;
         }
     </style>
-
 
     <title>Document</title>
 </head>
@@ -35,11 +38,13 @@
     <table id='main'>
     </table>
     <script>
+        // getting get params from url
         const urlParams = new URLSearchParams(window.location.search);
         var map = JSON.parse(urlParams.get('map'));
         var number = 0;
         var table = '';
         var $main = $('#main');
+        // creating table
         for (let index = 0; index < 5; index++) {
             var cells = '';
             for (let i = 0; i < 5; i++) {
@@ -56,9 +61,7 @@
         }
 
         $main.html(table);
-       
+
     </script>
-
 </body>
-
 </html>
