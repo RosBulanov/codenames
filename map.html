@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+    </script>
+    <style>
+        td {
+            width: 150px;
+            height: 150px;
+            font-size: 25px;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .black{
+            background-color: black;
+        }
+        .grey{
+            background-color: grey;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table id='main'>
+    </table>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        var map = JSON.parse(urlParams.get('map'));
+        var number = 0;
+        var table = '';
+        var $main = $('#main');
+        for (let index = 0; index < 5; index++) {
+            var cells = '';
+            for (let i = 0; i < 5; i++) {
+                var color = "grey";
+                if (map.red.indexOf(number) !== -1) { color = "red"; }
+                if (map.blue.indexOf(number) !== -1) { color = "blue"; }
+                if (map.black === number) { color = "black"; }
+                cells += '<td class="' + color + '">' + '</td>';
+                number++
+            }
+
+            var singleraw = '<tr id="raw_' + index + '">' + cells + '</tr>';
+            table += singleraw;
+        }
+
+        $main.html(table);
+       
+    </script>
+
+</body>
+
+</html>
