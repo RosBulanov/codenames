@@ -1,0 +1,23 @@
+td {
+    width: 150px;
+    height: 150px;
+    font-size: 25px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.black {
+    background-color: black;
+}
+
+.grey {
+    background-color: grey;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
